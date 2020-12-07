@@ -1,0 +1,25 @@
+.title {
+    background-color: #0e355f;
+    color: #ffffff;
+}
+
+.container-data {
+    background-color: #4682b4;
+}
+
+.container-data-details {
+    background-color: #ffffff;
+    display: grid;
+}
+
+.btn-on {
+    background-color: green !important;
+    border-color: green !important;
+    cursor: pointer;
+}
+
+.btn-off {
+    background-color: red !important;
+    border-color: red !important;
+    cursor: pointer;
+}
