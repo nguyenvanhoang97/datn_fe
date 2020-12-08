@@ -173,7 +173,6 @@ function App() {
             options={{
               title: {
                 display: true,
-
               },
               legend: {
                 display: true,
@@ -201,7 +200,6 @@ function App() {
             options={{
               title: {
                 display: true,
-
               },
               legend: {
                 display: true,
