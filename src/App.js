@@ -111,26 +111,26 @@ function App() {
         <Col sm={2} className='p-5 container-data-details'>
           <h4>Độ ẩm đất</h4>
           <h2 className='pt-5'>{state.soil} %</h2>
-          {(state.soil && state.soil < 31) ? <h5 className='pt-5 text-danger'>Độ ẩm thấp</h5> : null}
-          {(state.soil && state.soil > 30 && state.soil < 61) ? <h5 className='pt-5 text-success'>Độ ẩm trung bình</h5> : null}
+          {(state.soil && state.soil <= 30) ? <h5 className='pt-5 text-danger'>Độ ẩm thấp</h5> : null}
+          {(state.soil && state.soil > 30 && state.soil <= 60) ? <h5 className='pt-5 text-success'>Độ ẩm trung bình</h5> : null}
           {(state.soil && state.soil > 60) ? <h5 className='pt-5 text-danger'>Độ ẩm cao</h5> : null}
         </Col>
         <Col sm={1}></Col>
         <Col sm={2} className='p-5 container-data-details'>
           <h4>Nhiệt độ</h4>
           <h2 className='pt-5'>{state.temp} °C</h2>
-          {(state.temp && state.temp < 11) ? <h5 className='pt-5 text-danger'>Nhiệt độ rất thấp</h5> : null}
-          {(state.temp && state.temp > 10 && state.temp < 20) ? <h5 className='pt-5 text-warning'>Nhiệt độ thấp</h5> : null}
-          {(state.temp && state.temp > 19 && state.temp < 29) ? <h5 className='pt-5 text-success'>Nhiệt độ trung bình</h5> : null}
-          {(state.temp && state.temp > 28) ? <h5 className='pt-5 text-warning'>Nhiệt độ cao</h5> : null}
+          {(state.temp && state.temp <= 10) ? <h5 className='pt-5 text-danger'>Nhiệt độ rất thấp</h5> : null}
+          {(state.temp && state.temp > 10 && state.temp <= 20) ? <h5 className='pt-5 text-warning'>Nhiệt độ thấp</h5> : null}
+          {(state.temp && state.temp > 20 && state.temp <= 29) ? <h5 className='pt-5 text-success'>Nhiệt độ trung bình</h5> : null}
+          {(state.temp && state.temp > 29) ? <h5 className='pt-5 text-warning'>Nhiệt độ cao</h5> : null}
         </Col>
         <Col sm={1}></Col>
         <Col sm={2} className='p-5 container-data-details'>
           <h4>Độ ẩm không khí</h4>
           <h2 className='pt-5'>{state.humi} %</h2>
-          {(state.humi && state.humi < 50) ? <h5 className='pt-5 text-danger'>Độ ẩm thấp</h5> : null}
-          {(state.humi && state.humi > 49 && state.soil < 75) ? <h5 className='pt-5 text-success'>Độ ẩm trung bình</h5> : null}
-          {(state.humi && state.humi > 74) ? <h5 className='pt-5 text-danger'>Độ ẩm cao</h5> : null}
+          {(state.humi && state.humi <= 50) ? <h5 className='pt-5 text-danger'>Độ ẩm thấp</h5> : null}
+          {(state.humi && state.humi > 50 && state.soil <= 75) ? <h5 className='pt-5 text-success'>Độ ẩm trung bình</h5> : null}
+          {(state.humi && state.humi > 75) ? <h5 className='pt-5 text-danger'>Độ ẩm cao</h5> : null}
         </Col>
         <Col sm={1}></Col>
         <Col sm={3} className='p-5 container-data-details'>
