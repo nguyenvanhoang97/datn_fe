@@ -9,7 +9,6 @@ function App() {
   const [status, setStatus] = useState(true);
   const [statusBtnAuto, setStatusBtnAuto] = useState(true);
   const [statusMode, setStatusMode] = useState(false);
-  const [statusMotor, setStatusMotor] = useState('MOTOR_OFF');
   const [state, setState] = useState({
     humi: '',
     temp: '',
@@ -68,30 +67,29 @@ function App() {
   }
 
   const btnOnAuto = () => {
-    setStatusBtnAuto(false)
-    setStatusMode(true)
     axios
       .post('http://localhost:3001/sendAuto', {
         status: 'AUTO_ON'
       })
       .then(res => {
         if (res.status === 200) {
-          console.log(res.data);
+          setStatusBtnAuto(false)
+          setStatusMode(true)
+          setStatus(true)
         } else {
           console.log("error");
         }
       })
   }
   const btnOffAuto = () => {
-    setStatusBtnAuto(true)
-    setStatusMode(false)
     axios
       .post('http://localhost:3001/sendAuto', {
         status: 'AUTO_OFF'
       })
       .then(res => {
         if (res.status === 200) {
-          console.log(res.data);
+          setStatusBtnAuto(true)
+          setStatusMode(false)
         } else {
           console.log("error");
         }
@@ -99,14 +97,13 @@ function App() {
   }
 
   const btnOnMotor = () => {
-    setStatus(false)
     axios
       .post('http://localhost:3001/sendMotor', {
         status: 'MOTOR_ON'
       })
       .then(res => {
         if (res.status === 200) {
-          setStatusMotor(res.data)
+          setStatus(false)
         } else {
           console.log("error");
         }
@@ -114,14 +111,13 @@ function App() {
   }
 
   const btnOffMotor = () => {
-    setStatus(true)
     axios
       .post('http://localhost:3001/sendMotor', {
         status: 'MOTOR_OFF'
       })
       .then(res => {
         if (res.status === 200) {
-          setStatusMotor(res.data)
+          setStatus(true)
         } else {
           console.log("error");
         }
@@ -179,7 +175,7 @@ function App() {
             </Button>
           </div>
           <h5 className='pt-5'>
-            Trạng thái: LED_OFF
+            Trạng thái: LED OFF
           </h5>
         </Col>
         <Col sm={1}></Col>
@@ -198,9 +194,11 @@ function App() {
               </Button>
             }
           </div>
-          <h5 className='pt-5'>
-            Trạng thái: {statusMotor}
-          </h5>
+          {
+            status ?
+              <h5 className='pt-5'>Trạng thái: MOTOR OFF</h5> :
+              <h5 className='pt-5'>Trạng thái: MOTOR ON</h5>
+          }
         </Col>
       </Row>
       <Row className='m-0 pl-5 pr-5 text-center container-data'>
