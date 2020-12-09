@@ -70,16 +70,38 @@ function App() {
   const btnOnAuto = () => {
     setStatusBtnAuto(false)
     setStatusMode(true)
+    axios
+      .post('http://localhost:3001/sendAuto', {
+        status: 'AUTO_ON'
+      })
+      .then(res => {
+        if (res.status === 200) {
+          console.log(res.data);
+        } else {
+          console.log("error");
+        }
+      })
   }
   const btnOffAuto = () => {
     setStatusBtnAuto(true)
     setStatusMode(false)
+    axios
+      .post('http://localhost:3001/sendAuto', {
+        status: 'AUTO_OFF'
+      })
+      .then(res => {
+        if (res.status === 200) {
+          console.log(res.data);
+        } else {
+          console.log("error");
+        }
+      })
   }
 
   const btnOnMotor = () => {
     setStatus(false)
     axios
-      .post('http://localhost:3001/sendData', {
+      .post('http://localhost:3001/sendMotor', {
         status: 'MOTOR_ON'
       })
       .then(res => {
@@ -94,7 +116,7 @@ function App() {
   const btnOffMotor = () => {
     setStatus(true)
     axios
-      .post('http://localhost:3001/sendData', {
+      .post('http://localhost:3001/sendMotor', {
         status: 'MOTOR_OFF'
       })
       .then(res => {
