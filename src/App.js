@@ -110,7 +110,7 @@ function App() {
       <Row className='m-0 p-5 text-center container-data'>
         <Col sm={2} className='p-5 container-data-details'>
           <h4>Độ ẩm đất</h4>
-          <h2 className='pt-5'>{state.soil} %</h2>
+          <h2 className='pt-5'>{state.soil === 100 ? 0 : state.soil} %</h2>
           {(state.soil && state.soil <= 30) ? <h5 className='pt-5 text-danger'>Độ ẩm thấp</h5> : null}
           {(state.soil && state.soil > 30 && state.soil <= 60) ? <h5 className='pt-5 text-success'>Độ ẩm trung bình</h5> : null}
           {(state.soil && state.soil > 60) ? <h5 className='pt-5 text-danger'>Độ ẩm cao</h5> : null}
