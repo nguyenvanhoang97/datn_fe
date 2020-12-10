@@ -138,7 +138,7 @@ function App() {
       </div>
       <Row className='m-0 p-5 text-center container-data'>
         <Col sm={3} className='p-5 container-data-details'>
-          <h5>Độ ẩm đất: {state.soil} %</h5>
+          <h5>Độ ẩm đất: {state.soil === 100 ? 0 : state.soil} %</h5>
           <h5>Nhiệt độ: {state.temp} C</h5>
           <h5>Độ ẩm không khí: {state.humi} %</h5>
         </Col>
@@ -239,7 +239,6 @@ function App() {
             options={{
               title: {
                 display: true,
-
               },
               legend: {
                 display: true,
@@ -267,7 +266,6 @@ function App() {
             options={{
               title: {
                 display: true,
-
               },
               legend: {
                 display: true,
