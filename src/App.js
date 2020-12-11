@@ -29,14 +29,14 @@ function App() {
               temp: res.data.temp,
               soil: res.data.soil
             })
-            if (moment(Date.now()).format('mm') === '00') {
+            // if (moment(Date.now()).format('mm') === '00') {
               setStateChart((stateChart) => ({
                 ...stateChart,
                 dateChart: [...stateChart.dateChart, moment(Date.now()).format('DD/MM/YYYY hh:mm')],
                 humiChart: [...stateChart.humiChart, res.data.humi],
                 tempChart: [...stateChart.tempChart, res.data.temp]
               }))
-            }
+            // }
           } else {
             console.log("error");
           }
