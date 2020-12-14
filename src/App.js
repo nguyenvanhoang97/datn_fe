@@ -6,7 +6,7 @@ import { Row, Col, Button } from 'reactstrap';
 import { Line } from "react-chartjs-2";
 
 function App() {
-  const [status, setStatus] = useState(true);
+  const [statusBtnMotor, setStatusBtnMotor] = useState(true);
   const [statusBtnAuto, setStatusBtnAuto] = useState(true);
   const [statusMode, setStatusMode] = useState(false);
   const [state, setState] = useState({
@@ -75,7 +75,7 @@ function App() {
         if (res.status === 200) {
           setStatusBtnAuto(false)
           setStatusMode(true)
-          setStatus(true)
+          setStatusBtnMotor(true)
         } else {
           console.log("error");
         }
@@ -103,7 +103,7 @@ function App() {
       })
       .then(res => {
         if (res.status === 200) {
-          setStatus(false)
+          setStatusBtnMotor(false)
         } else {
           console.log("error");
         }
@@ -117,7 +117,7 @@ function App() {
       })
       .then(res => {
         if (res.status === 200) {
-          setStatus(true)
+          setStatusBtnMotor(true)
         } else {
           console.log("error");
         }
@@ -185,7 +185,7 @@ function App() {
           </h4>
           <div className='pt-5'>
             {
-              status ?
+              statusBtnMotor ?
                 <Button className='btn-on' disabled={statusMode} onClick={btnOnMotor}>
                   On
               </Button> :
@@ -195,7 +195,7 @@ function App() {
             }
           </div>
           {
-            status ?
+            statusBtnMotor ?
               <h5 className='pt-5'>Trạng thái: MOTOR OFF</h5> :
               <h5 className='pt-5'>Trạng thái: MOTOR ON</h5>
           }
