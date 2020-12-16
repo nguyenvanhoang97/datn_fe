@@ -26,16 +26,16 @@ function App() {
         .then(res => {
           if (res.status === 200) {
             setState({
-              humi: res.data.humi,
-              temp: res.data.temp,
-              soil: res.data.soil
+              humi: res.data.humidity,
+              temp: res.data.temperature,
+              soil: res.data.soil_moisture
             })
             // if (moment(Date.now()).format('mm') === '00') {
               setStateChart((stateChart) => ({
                 ...stateChart,
                 dateChart: [...stateChart.dateChart, moment(Date.now()).format('DD/MM/YYYY hh:mm')],
-                humiChart: [...stateChart.humiChart, res.data.humi],
-                tempChart: [...stateChart.tempChart, res.data.temp]
+                humiChart: [...stateChart.humiChart, res.data.humidity],
+                tempChart: [...stateChart.tempChart, res.data.temperature]
               }))
             // }
           } else {
