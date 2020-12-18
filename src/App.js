@@ -24,18 +24,18 @@ function App() {
     const interval = setInterval(() => {
       axios.get('http://localhost:3001/')
         .then(res => {
-          if (res.status === 200) {
+          if (res.data.status === 200) {
             setState({
-              humi: res.data.humidity,
-              temp: res.data.temperature,
-              soil: res.data.soil_moisture
+              humi: res.data.data.humidity,
+              temp: res.data.data.temperature,
+              soil: res.data.data.soil_moisture
             })
             // if (moment(Date.now()).format('mm') === '00') {
               setStateChart((stateChart) => ({
                 ...stateChart,
                 dateChart: [...stateChart.dateChart, moment(Date.now()).format('DD/MM/YYYY hh:mm')],
-                humiChart: [...stateChart.humiChart, res.data.humidity],
-                tempChart: [...stateChart.tempChart, res.data.temperature]
+                humiChart: [...stateChart.humiChart, res.data.data.humidity],
+                tempChart: [...stateChart.tempChart, res.data.data.temperature]
               }))
             // }
           } else {
