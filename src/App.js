@@ -12,7 +12,8 @@ function App() {
   const [state, setState] = useState({
     humi: '',
     temp: '',
-    soil: ''
+    soil: '',
+    status_motor: ''
   });
   const [stateChart, setStateChart] = useState({
     dateChart: [],
@@ -28,7 +29,8 @@ function App() {
             setState({
               humi: res.data.data.humidity,
               temp: res.data.data.temperature,
-              soil: res.data.data.soil_moisture
+              soil: res.data.data.soil_moisture,
+              status_motor: res.data.data.status_motor,
             })
             // if (moment(Date.now()).format('mm') === '00') {
               setStateChart((stateChart) => ({
@@ -195,9 +197,9 @@ function App() {
             }
           </div>
           {
-            statusBtnMotor ?
-              <h5 className='pt-5'>Trạng thái: MOTOR OFF</h5> :
-              <h5 className='pt-5'>Trạng thái: MOTOR ON</h5>
+            state.status_motor === 0 ?
+            <h5 className='pt-5'>Trạng thái: MOTOR ON</h5> :
+            <h5 className='pt-5'>Trạng thái: MOTOR OFF</h5>
           }
         </Col>
       </Row>
