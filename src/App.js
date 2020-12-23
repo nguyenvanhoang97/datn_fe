@@ -11,7 +11,7 @@ function App() {
   const [state, setState] = useState({
     humi: '',
     temp: '',
-    soil: ''
+    soil: '',
   });
   const [stateChart, setStateChart] = useState({
     dateChart: [],
@@ -25,16 +25,16 @@ function App() {
         .then(res => {
           if (res.data.status === 200) {
             setState({
-              humi: res.data.data.humi,
-              temp: res.data.data.temp,
-              soil: res.data.data.soil
+              humi: res.data.data.humidity,
+              temp: res.data.data.temperature,
+              soil: res.data.data.soil_moisture
             })
             // if (moment(Date.now()).format('mm') === '00') {
               setStateChart((stateChart) => ({
                 ...stateChart,
                 dateChart: [...stateChart.dateChart, moment(Date.now()).format('DD/MM/YYYY hh:mm')],
-                humiChart: [...stateChart.humiChart, res.data.data.humi],
-                tempChart: [...stateChart.tempChart, res.data.data.temp]
+                humiChart: [...stateChart.humiChart, res.data.data.humidity],
+                tempChart: [...stateChart.tempChart, res.data.data.temperature]
               }))
             // }
           } else {
